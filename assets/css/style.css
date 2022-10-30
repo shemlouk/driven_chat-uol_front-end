@@ -50,6 +50,118 @@ body {
     background-color: var(--background);
 }
 
+/* || LOGIN VIEW || ================================================= */
+
+.login-view {
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.login-view img {
+    margin-top: 72px;
+    margin-bottom: 94px;
+    width: 130px;
+}
+
+.login-view__input {
+    width: 261px;
+    height: 54px;
+    text-align: center;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.login-view__input::placeholder {
+    font-style: normal;
+    color: var(--input-font-color);
+}
+
+.login-view__button {
+    width: 109px;
+    height: 45px;
+    background-color: var(--button-background);
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--button-font-color);
+}
+
+/* || SIDEBAR VIEW || =============================================== */
+
+.sidebar-view {
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--sidebar-background);
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+}
+
+aside {
+    width: 259px;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+aside p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    text-align: center;
+    margin-bottom: 23px;
+}
+
+aside > div {
+    margin-top: 23px;
+    width: 100%;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+.sidebar-view button {
+    width: 100%;
+    cursor: pointer;
+}
+
+.sidebar-view button div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sidebar-view button ion-icon {
+    height: 25px;
+    width: 25px;
+    margin-right: 8px;
+}
+
+.sidebar-view button span {
+    font-size: 16px;
+}
+
+
 /* || HEADER || ===================================================== */
 
 header {

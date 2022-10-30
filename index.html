@@ -5,12 +5,72 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat da UOL</title>
+    <title>Bate Papo UOL</title>
     <link rel="icon" type="image/x-icon" href="./assets/icon.ico">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+
+    <div class="login-view hidden">
+        <img src="./assets/logo.svg" alt="logo da uol">
+        <input data-input="username" class="login-view__input" type="text" placeholder="Digite seu nome">
+        <input type="button" class="login-view__button" value="Entrar">
+    </div>
+
+    <div class="sidebar-view">
+        <aside>
+            <div>
+                <p>Escolha um contato para enviar mensagem:</p>
+                <ul data-users>
+                    <li>
+                        <button data-user="Todos">
+                            <ion-icon name="people"></ion-icon>
+                            <div>
+                                <span>Todos</span>
+                                <img class="hidden" src="./assets/check.svg" alt="check">
+                            </div>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button data-user="Maria">
+                            <ion-icon name="person-circle"></ion-icon>
+                            <div>
+                                <span>Maria</span>
+                                <img class="hidden" src="./assets/check.svg" alt="check">
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <p>Escolha a visibilidade:</p>
+                <ul>
+                    <li>
+                        <button data-mode="public">
+                            <ion-icon name="lock-open"></ion-icon>
+                            <div>
+                                <span>Público</span>
+                                <img class="hidden" src="./assets/check.svg" alt="check">
+                            </div>
+                        </button>
+                    </li>
+
+                    <li>
+                        <button data-mode="private">
+                            <ion-icon name="lock-closed"></ion-icon>
+                            <div>
+                                <span>Reservadamente</span>
+                                <img class="hidden" src="./assets/check.svg" alt="check">
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
 
     <header>
         <a href="#">
@@ -43,7 +103,7 @@
 
         <div class="chat-message private_message">
             <span class="chat-message__time">(09:22:45)</span>
-            <span data-message="info" class="chat-message__info">
+            <span class="chat-message__info">
                 <strong>João</strong>
                 reservadamente para
                 <strong>Maria</strong>:
@@ -57,7 +117,7 @@
     <footer>
         <div>
             <input data-input="message" type="text" placeholder="Escreva aqui...">
-            <p data-input="info" class="input-info hidden">Enviando para Maria (reservadamente)</p>
+            <p data-input="info" class="input-info">Enviando para Maria (reservadamente)</p>
         </div>
         <button data-button="send">
             <ion-icon name="paper-plane-outline"></ion-icon>
