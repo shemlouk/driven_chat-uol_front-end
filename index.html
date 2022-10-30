@@ -11,6 +11,59 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+
+    <header>
+        <a href="#">
+            <img src="./assets/logo.svg" alt="logo da uol">
+        </a>
+        <button data-button="options">
+            <ion-icon name="people"></ion-icon>
+        </button>
+    </header>
+
+    <main data-chat>
+
+        <div class="chat-message status">
+            <span class="chat-message__time">(09:21:45)</span>
+            <span class="chat-message__info">
+                <strong>João</strong>
+                entra na sala...
+            </span>
+        </div>
+
+        <div class="chat-message message">
+            <span class="chat-message__time">(09:22:45)</span>
+            <span class="chat-message__info">
+                <strong>João</strong>
+                para
+                <strong>Todos</strong>:
+            </span>
+            <span class="chat-message__text">Olá a todos!</span>
+        </div>
+
+        <div class="chat-message private_message">
+            <span class="chat-message__time">(09:22:45)</span>
+            <span data-message="info" class="chat-message__info">
+                <strong>João</strong>
+                reservadamente para
+                <strong>Maria</strong>:
+            </span>
+            <span class="chat-message__text">Oi Maria!</span>
+        </div>
+
+    </main>
+
+
+    <footer>
+        <div>
+            <input data-input="message" type="text" placeholder="Escreva aqui...">
+            <p data-input="info" class="input-info hidden">Enviando para Maria (reservadamente)</p>
+        </div>
+        <button data-button="send">
+            <ion-icon name="paper-plane-outline"></ion-icon>
+        </button>
+    </footer>
+
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
