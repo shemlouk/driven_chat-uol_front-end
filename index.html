@@ -12,13 +12,13 @@
 </head>
 <body>
 
-    <div class="login-view hidden">
+    <div data-view="login" class="login-view">
         <img src="./assets/logo.svg" alt="logo da uol">
         <input data-input="username" class="login-view__input" type="text" placeholder="Digite seu nome">
-        <input type="button" class="login-view__button" value="Entrar">
+        <input data-button="login" type="button" class="login-view__button" value="Entrar">
     </div>
 
-    <div class="sidebar-view">
+    <div data-view="sidebar" class="sidebar-view hidden">
         <aside>
             <div>
                 <p>Escolha um contato para enviar mensagem:</p>
@@ -81,36 +81,7 @@
         </button>
     </header>
 
-    <main data-chat>
-
-        <div class="chat-message status">
-            <span class="chat-message__time">(09:21:45)</span>
-            <span class="chat-message__info">
-                <strong>João</strong>
-                entra na sala...
-            </span>
-        </div>
-
-        <div class="chat-message message">
-            <span class="chat-message__time">(09:22:45)</span>
-            <span class="chat-message__info">
-                <strong>João</strong>
-                para
-                <strong>Todos</strong>:
-            </span>
-            <span class="chat-message__text">Olá a todos!</span>
-        </div>
-
-        <div class="chat-message private_message">
-            <span class="chat-message__time">(09:22:45)</span>
-            <span class="chat-message__info">
-                <strong>João</strong>
-                reservadamente para
-                <strong>Maria</strong>:
-            </span>
-            <span class="chat-message__text">Oi Maria!</span>
-        </div>
-
+    <main data-view="chat">
     </main>
 
 
