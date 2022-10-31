@@ -234,6 +234,15 @@ main {
     overflow-x: hidden;
 }
 
+main::-webkit-scrollbar {
+    width: 12px;
+}
+
+main::-webkit-scrollbar-thumb {
+    background-color: #696969;
+    border-radius: 50px;
+}
+
 /* || CHAT || ======================================================= */
 
 .chat-message {
