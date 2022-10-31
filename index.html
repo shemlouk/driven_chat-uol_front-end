@@ -23,8 +23,8 @@
             <div>
                 <p>Escolha um contato para enviar mensagem:</p>
                 <ul data-users>
-                    <li>
-                        <button data-user="Todos">
+                    <li data-user="Todos">
+                        <button>
                             <ion-icon name="people"></ion-icon>
                             <div>
                                 <span>Todos</span>
@@ -33,8 +33,8 @@
                         </button>
                     </li>
 
-                    <li>
-                        <button data-user="Maria">
+                    <li data-user="Maria">
+                        <button>
                             <ion-icon name="person-circle"></ion-icon>
                             <div>
                                 <span>Maria</span>
@@ -48,8 +48,8 @@
             <div>
                 <p>Escolha a visibilidade:</p>
                 <ul>
-                    <li>
-                        <button data-mode="public">
+                    <li data-mode="message">
+                        <button>
                             <ion-icon name="lock-open"></ion-icon>
                             <div>
                                 <span>Público</span>
@@ -58,8 +58,8 @@
                         </button>
                     </li>
 
-                    <li>
-                        <button data-mode="private">
+                    <li data-mode="private_message">
+                        <button>
                             <ion-icon name="lock-closed"></ion-icon>
                             <div>
                                 <span>Reservadamente</span>
@@ -88,7 +88,7 @@
     <footer>
         <div>
             <input data-input="message" type="text" placeholder="Escreva aqui...">
-            <p data-input="info" class="input-info">Enviando para Maria (reservadamente)</p>
+            <p data-input="info"></p>
         </div>
         <button data-button="send">
             <ion-icon name="paper-plane-outline"></ion-icon>
