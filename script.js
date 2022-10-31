@@ -8,12 +8,10 @@ const view = {
     sidebar: document.querySelector("[data-view='sidebar']")
 }
 
+const modeOptions = Array.from(document.querySelectorAll("[data-mode]"))
 const buttons = document.querySelectorAll("[data-button]")
 const inputs = document.querySelectorAll('[data-input]')
 const users = document.querySelector('[data-users]')
-
-const modeOptions = Array.from(document.querySelectorAll("[data-mode]"))
-
 
 const sendingOptions = {
     user: {
@@ -32,7 +30,11 @@ let username
 
 view.sidebar.addEventListener('click', e => {
     const area = e.target
-    if (area.hasAttribute('data-view')) area.classList.toggle('hidden')
+    if (area.hasAttribute('data-view')) {
+        toggleSmoothSidebar()
+        toggleSmoothBackground()
+        setTimeout( ()=> area.classList.toggle('hidden'), 300)
+    }
 })
 
 buttons.forEach(button => {
@@ -41,10 +43,12 @@ buttons.forEach(button => {
         const buttonType = selectedButton.getAttribute('data-button')
         if (buttonType === "login") {
             getUsername()
+            toggleLoadingView()
             updateUsername(username)
         } else if (buttonType === 'options') {
             view.sidebar.classList.toggle('hidden')
-            updateActiveUsers()
+            toggleSmoothSidebar()
+            toggleSmoothBackground()
         } else {
             sendMessageFromInput()
         }
@@ -58,6 +62,7 @@ inputs.forEach(input => {
             const inputType = selectedInput.getAttribute('data-input')
             if (inputType === 'username') {
                 getUsername()
+                toggleLoadingView()
                 updateUsername(username)
             } else {
                 sendMessageFromInput()
@@ -134,6 +139,7 @@ function updateUsername(username) {
     .then(() => {
         updateInfo()
         updateChat()
+        updateActiveUsers()
         toggleOptionCheck(sendingOptions.mode.element)
         view.login.classList.toggle('hidden')
         setInterval(() => {
@@ -142,10 +148,14 @@ function updateUsername(username) {
         setInterval(() => {
             updateChat()
         }, 3000)
+        setInterval(() => {
+            updateActiveUsers()
+        }, 10000)
     })
     .catch(() => {
         alert(`"${username}" já está em uso, por favor insira um novo nome!`)
         username = ''
+        toggleLoadingView()
     })
 }
 
@@ -153,6 +163,23 @@ function getUsername() {
     const input = document.querySelector("[data-input='username']")
     username = input.value
     input.value = ''
+}
+
+function toggleLoadingView() {
+    const loading = document.querySelector('.login__loading')
+    const text = document.querySelector("[data-input='username']")
+    const button = document.querySelector("[data-button='login']")
+
+    if (loading.classList.contains('hidden')) {
+        text.classList.add('hidden')
+        button.classList.add('hidden')
+        loading.classList.remove('hidden')
+    } else {
+        text.classList.remove('hidden')
+        button.classList.remove('hidden')
+        loading.classList.add('hidden')
+        text.focus()
+    }
 }
 
 //======================================================================
@@ -246,17 +273,18 @@ function createHtmlElement(tag, classes, content) {
 //======================================================================
 
 function updateActiveUsers() {
-    users.innerHTML = `<li data-user="Todos" data-identifier="participant">
-                            <button>
-                                <ion-icon name="people"></ion-icon>
-                                <div>
-                                    <span>Todos</span>
-                                    <img class="hidden" src="./assets/check.svg" alt="check">
-                                </div>
-                            </button>
-                        </li>`
+    const html = `<li data-user="Todos" data-identifier="participant">
+                        <button>
+                            <ion-icon name="people"></ion-icon>
+                            <div>
+                                <span>Todos</span>
+                                <img class="hidden" src="./assets/check.svg" alt="check">
+                            </div>
+                        </button>
+                    </li>`
     axios.get(urlUsers).then(response => {
         const objs = response.data
+        users.innerHTML = html
         objs.forEach(user => {
             createUser(user, users)
         })
@@ -284,4 +312,32 @@ function createUser(obj, parent) {
     user.setAttribute("data-user", name)
     user.setAttribute("data-identifier","participant")
     parent.appendChild(user)
+}
+
+function toggleSmoothSidebar() {
+    const asideClasses = view.sidebar.querySelector('aside').classList
+
+    if (asideClasses.contains('move-left')) {
+        asideClasses.remove('move-left')
+        asideClasses.add('move-right')
+    } else if (asideClasses.contains('move-right')) {
+        asideClasses.remove('move-right')
+        asideClasses.add('move-left')
+    } else {
+        asideClasses.add('move-left')
+    }
+}
+
+function toggleSmoothBackground() {
+    const sidebarClasses = view.sidebar.classList
+
+    if (sidebarClasses.contains('background-in')) {
+        sidebarClasses.remove('background-in')
+        sidebarClasses.add('background-out')
+    } else if (sidebarClasses.contains('background-out')) {
+        sidebarClasses.remove('background-out')
+        sidebarClasses.add('background-in')
+    } else {
+        sidebarClasses.add('background-in')
+    }
 }

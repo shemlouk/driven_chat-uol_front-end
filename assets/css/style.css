@@ -37,6 +37,11 @@ button {
 
 ion-icon {
     cursor: pointer;
+    transition: .3s;
+}
+
+ion-icon:active {
+    transform: scale(.9);
 }
 
 /* || PAGE || ======================================================= */
@@ -66,7 +71,7 @@ body {
     justify-content: flex-start;
 }
 
-.login-view img {
+.login-view img:first-child {
     margin-top: 72px;
     margin-bottom: 94px;
     width: 130px;
@@ -96,6 +101,19 @@ body {
     cursor: pointer;
     font-size: 18px;
     color: var(--button-font-color);
+    transition: .5s;
+}
+
+.login-view__button:hover {
+    background-color: #D7D7D7;
+}
+
+.login-view__button:active {
+    transform: scale(0.95);
+}
+
+.login__loading {
+    width: 300px;
 }
 
 /* || SIDEBAR VIEW || =============================================== */
@@ -110,6 +128,7 @@ body {
     z-index: 2;
     display: flex;
     justify-content: flex-end;
+    overflow: hidden;
 }
 
 aside {
@@ -119,7 +138,6 @@ aside {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0px 20px;
     overflow-y: scroll;
 }
 
@@ -134,6 +152,7 @@ aside p {
     line-height: 19px;
     text-align: center;
     margin-bottom: 23px;
+    padding: 0px 20px;
 }
 
 aside > div {
@@ -142,7 +161,15 @@ aside > div {
 }
 
 li {
+    height: 32px;
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+li:hover {
+    background-color: #DCDCDC;
 }
 
 .sidebar-view button {
@@ -164,6 +191,10 @@ li {
 
 .sidebar-view button span {
     font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: start;
 }
 
 
@@ -218,6 +249,10 @@ main {
 
 .chat-message__info, .chat-message__text {
     margin-left: 4px;
+}
+
+.chat-message__text {
+    word-wrap: break-word;
 }
 
 .status {
@@ -286,4 +321,42 @@ footer ion-icon {
 
 .hidden {
     display: none;
+}
+
+.move-left {
+    animation: sidebar-move-left .3s ease-out;
+}
+
+.move-right {
+    animation: sidebar-move-right .3s ease-out;
+}
+
+.background-in {
+    animation: smooth-background-in .3s ease-out;
+}
+
+.background-out {
+    animation: smooth-background-out .3s ease-out;
+}
+
+/* || ANIMATIONS || ================================================= */
+
+@keyframes sidebar-move-left {
+    0% {transform: translateX(259px);}
+    100% {transform: translateX(0px);}
+}
+
+@keyframes sidebar-move-right {
+    0% {transform: translateX(0px);}
+    100% {transform: translateX(259px);}
+}
+
+@keyframes smooth-background-in {
+    0% {background-color: transparent;}
+    100% {background-color: var(--sidebar-background);}
+}
+
+@keyframes smooth-background-out {
+    0% {background-color: var(--sidebar-background);}
+    100% {background-color: transparent;}
 }
