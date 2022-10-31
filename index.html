@@ -11,13 +11,11 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-
     <div data-view="login" class="login-view">
         <img src="./assets/logo.svg" alt="logo da uol">
-        <input data-input="username" class="login-view__input" type="text" placeholder="Digite seu nome">
-        <input data-button="login" type="button" class="login-view__button" value="Entrar">
+        <input data-identifier="enter-name" data-input="username" class="login-view__input" type="text" placeholder="Digite seu nome">
+        <input data-identifier="start" data-button="login" type="button" class="login-view__button" value="Entrar">
     </div>
-
     <div data-view="sidebar" class="sidebar-view hidden">
         <aside>
             <div>
@@ -32,23 +30,12 @@
                             </div>
                         </button>
                     </li>
-
-                    <li data-user="Maria">
-                        <button>
-                            <ion-icon name="person-circle"></ion-icon>
-                            <div>
-                                <span>Maria</span>
-                                <img class="hidden" src="./assets/check.svg" alt="check">
-                            </div>
-                        </button>
-                    </li>
                 </ul>
             </div>
-
             <div>
                 <p>Escolha a visibilidade:</p>
                 <ul>
-                    <li data-mode="message">
+                    <li data-mode="message" data-identifier="visibility">
                         <button>
                             <ion-icon name="lock-open"></ion-icon>
                             <div>
@@ -57,8 +44,7 @@
                             </div>
                         </button>
                     </li>
-
-                    <li data-mode="private_message">
+                    <li data-mode="private_message" data-identifier="visibility">
                         <button>
                             <ion-icon name="lock-closed"></ion-icon>
                             <div>
@@ -71,7 +57,6 @@
             </div>
         </aside>
     </div>
-
     <header>
         <a href="#">
             <img src="./assets/logo.svg" alt="logo da uol">
@@ -80,21 +65,16 @@
             <ion-icon name="people"></ion-icon>
         </button>
     </header>
-
-    <main data-view="chat">
-    </main>
-
-
+    <main data-view="chat"></main>
     <footer>
         <div>
             <input data-input="message" type="text" placeholder="Escreva aqui...">
-            <p data-input="info"></p>
+            <p data-info></p>
         </div>
         <button data-button="send">
             <ion-icon name="paper-plane-outline"></ion-icon>
         </button>
     </footer>
-
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
