@@ -250,6 +250,7 @@ function createMessage(obj) {
             break
     }
     const message = createHtmlElement('div', ['chat-message', type], '')
+    message.setAttribute("data-test", "message")
     const messageElements = [
         createHtmlElement('span', ['chat-message__time'], `(${obj.time})`),
         createHtmlElement('span', ['chat-message__info'], info),
@@ -273,7 +274,7 @@ function createHtmlElement(tag, classes, content) {
 //======================================================================
 
 function updateActiveUsers() {
-    const html = `<li data-user="Todos" data-identifier="participant">
+    const html = `<li data-user="Todos" data-identifier="participant" data-test="all">
                         <button>
                             <ion-icon name="people"></ion-icon>
                             <div>
@@ -305,11 +306,12 @@ function createUser(obj, parent) {
                         <ion-icon name="person-circle"></ion-icon>
                         <div>
                             <span>${name}</span>
-                            <img class="hidden" src="./assets/check.svg" alt="check">
+                            <img data-test="check" class="hidden" src="./assets/check.svg" alt="check">
                         </div>
                     </button>`
     const user = createHtmlElement('li', [], html)
     user.setAttribute("data-user", name)
+    user.setAttribute("data-test", "participant")
     user.setAttribute("data-identifier","participant")
     parent.appendChild(user)
 }
